@@ -1,0 +1,26 @@
+{
+  "name": "@wuijs/core",
+  "version": "0.0.1",
+  "description": "a core of wui-micro or other micro frontends",
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "rimraf lib && rollup -c",
+    "build:w": "npm run build -- -w",
+    "pub": "npm run build && npm publish --access public",
+    "test": "rimraf coverage && jest --coverage",
+    "codecov": "codecov",
+    "coveralls": "coveralls < ./coverage/lcov.info"
+  },
+  "devDependencies": {
+    "codecov": "^3.8.3",
+    "coveralls": "^3.1.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.56.3",
+    "whatwg-fetch": "^3.6.2"
+  },
+  "repository": "https://github.com/wuijs/wui",
+  "author": "vk <valleykiddy@gmail.com>",
+  "license": "MIT"
+}

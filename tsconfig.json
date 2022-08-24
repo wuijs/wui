@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "module": "es2015",
+    "target": "es5",
+    "lib": ["esnext", "dom"],
+    "baseUrl": "./packages",
+    "paths": {
+      "@wuijs/(core|type|util)": ["./*/src/"]
+    },
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "./lib",
+    "allowJs": true,
+    "moduleResolution": "Node"
+  },
+  "exclude": ["node_modules", "./**/coverage/**/*", "./**/jest.config.js"]
+}
