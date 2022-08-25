@@ -1,7 +1,7 @@
 {
-  "name": "@wuijs/core",
+  "name": "@wuijs/util",
   "version": "0.0.1",
-  "description": "a core of wui-micro or other micro frontends",
+  "description": "utils & constants & toolkits of wui-micro",
   "main": "lib/index.js",
   "module": "lib/index.es.js",
   "types": "lib/index.d.ts",
@@ -18,8 +18,7 @@
     "codecov": "^3.8.3",
     "coveralls": "^3.1.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.56.3",
-    "whatwg-fetch": "^3.6.2"
+    "rollup": "^2.56.3"
   },
   "repository": "https://github.com/wuijs/wui",
   "author": "vk <valleykiddy@gmail.com>",
