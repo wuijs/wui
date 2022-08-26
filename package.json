@@ -6,6 +6,7 @@
   "scripts": {
     "test": "lerna run test",
     "test:log": "npm test -- -- --verbose",
+    "build": "lerna run build",
     "typecheck": "lerna exec -- tsc --noEmit",
     "prepare": "husky install",
     "c": "lerna clean -y & rm -rf node_modules/ yarn.lock",
