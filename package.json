@@ -9,7 +9,8 @@
     "typecheck": "lerna exec -- tsc --noEmit",
     "prepare": "husky install",
     "c": "lerna clean -y & rm -rf node_modules/ yarn.lock",
-    "b": "lerna bootstrap --force-local && lerna link --force-local"
+    "b": "lerna bootstrap --force-local && lerna link --force-local",
+    "bs": "lerna bootstrap"
   },
   "dependencies": {},
   "devDependencies": {

@@ -1,0 +1,30 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:16
+    working_directory: ~/wui
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/wui
+      - run:
+          name: Install Dependencies
+          command: yarn global add lerna && yarn c && yarn bs
+      - run:
+          name: Run Build
+          command: yarn build
+      - run:
+          name: Run Type Check
+          command: yarn run tsc --noEmit
+      - run:
+          name: Run Tests
+          command: yarn test
+          no_output_timeout: 300m
+      # - run:
+      #     name: Generate coverage
+      #     command: yarn codecov
+      # - run:
+      #     name: Coveralls coverage
+      #     command: yarn coveralls
