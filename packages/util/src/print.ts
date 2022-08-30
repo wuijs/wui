@@ -6,10 +6,8 @@ function print(type: string, args: any[]) {
 }
 
 export function printLog(...args: any[]) {
-  const debuggerVal = typeof localStorage !== 'undefined' ? localStorage.getItem(cMicroDebugger) : 'true';
-  if (debuggerVal === '1' || debuggerVal === 'true') {
-    print('log', args);
-  }
+  const val = typeof localStorage !== 'undefined' ? localStorage.getItem(cMicroDebugger) : 'true';
+  if (val === '1' || val === 'true') print('log', args);
 }
 
 export function printWarn(...args: any[]) {
