@@ -1,7 +1,7 @@
 import * as util from '../print';
 
 describe('utils print test', () => {
-  it('printLog', () => {
+  test('printLog', () => {
     jest.spyOn(window.localStorage.__proto__, 'getItem').mockImplementation(() => 'true');
     const spy = jest.spyOn(window.console, 'log').mockImplementation();
 
@@ -20,7 +20,7 @@ describe('utils print test', () => {
     spy.mockRestore();
   });
 
-  it('printWarn', () => {
+  test('printWarn', () => {
     const spy = jest.spyOn(window.console, 'warn').mockImplementation();
     util.printWarn();
     expect(console.warn).toBeCalled();
@@ -28,7 +28,7 @@ describe('utils print test', () => {
     spy.mockRestore();
   });
 
-  it('printError', () => {
+  test('printError', () => {
     const spy = jest.spyOn(window.console, 'error').mockImplementation();
     util.printError();
     expect(console.error).toBeCalled();
@@ -36,7 +36,7 @@ describe('utils print test', () => {
     spy.mockRestore();
   });
 
-  it('throwError', () => {
+  test('throwError', () => {
     try {
       util.throwError('error test');
     } catch (err) {

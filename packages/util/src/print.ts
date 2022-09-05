@@ -7,7 +7,7 @@ function print(type: string, args: any[]) {
 
 export function printLog(...args: any[]) {
   const val = typeof localStorage !== 'undefined' ? localStorage.getItem(cMicroDebugger) : 'true';
-  if (val === '1' || val === 'true') print('log', args);
+  if (val !== '0') print('log', args);
 }
 
 export function printWarn(...args: any[]) {

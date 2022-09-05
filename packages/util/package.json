@@ -13,8 +13,11 @@
     "codecov": "codecov",
     "coveralls": "coveralls < ./coverage/lcov.info"
   },
-  "dependencies": {},
+  "dependencies": {
+    "url-parse": "^1.5.10"
+  },
   "devDependencies": {
+    "@types/url-parse": "^1.4.8",
     "codecov": "^3.8.3",
     "coveralls": "^3.1.1",
     "rimraf": "^3.0.2",
