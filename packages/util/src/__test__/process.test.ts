@@ -1,5 +1,6 @@
 jest.mock('url-parse');
 import parse from 'url-parse';
+import { FileType } from '@wuijs/type';
 import * as util from '../process';
 
 describe('utils receive test', () => {
@@ -37,5 +38,22 @@ describe('utils receive test', () => {
     expect(util.getFullUrl('http://foo.com', 'http://foo.com/abc')).toBe('http://foo.com/abc');
     expect(util.getFullUrl('http://bar.com', 'http://foo.com/bar')).toBe('http://foo.com/bar');
     expect(util.getFullUrl('http://foo.com/', '/bar')).toBe('http://foo.com/bar');
+  });
+
+  test('getFileExt', () => {
+    expect(util.getFileExt('https://www.foo.com')).toBe(FileType.JSON);
+    expect(util.getFileExt('https://www.foo.com/')).toBe(FileType.JSON);
+    expect(util.getFileExt('https://www.foo.com/abc')).toBe(FileType.JSON);
+    expect(util.getFileExt('https://www.foo.com/index.htm?a=1&b=2&c=3')).toBe(FileType.HTML);
+    expect(util.getFileExt('https://www.foo.com/index.xhtml#hash=test')).toBe(FileType.HTML);
+    expect(util.getFileExt('https://www.foo.com/index.html?a=1&b=2&c=3#hash=test')).toBe(FileType.HTML);
+    expect(util.getFileExt('https://www.foo.com/index.html#hash=test?a=1&b=2&c=3')).toBe(FileType.HTML);
+    expect(util.getFileExt('https://www.foo.com/index.js')).toBe(FileType.JS);
+    expect(util.getFileExt('https://www.foo.com/index.css')).toBe(FileType.CSS);
+    expect(util.getFileExt('//www.foo.com/??s/0.0.1/jquery.js,s/0.1.0/jq-plugin.js')).toBe(FileType.JS);
+    expect(util.getFileExt('js')).toBe(FileType.JS);
+    expect(util.getFileExt('test.vue')).toBe(FileType.JS);
+
+    expect((util.getFileName as any)()).toBe('');
   });
 });

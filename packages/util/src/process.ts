@@ -1,4 +1,5 @@
 import parse from 'url-parse';
+import { FileType } from '@wuijs/type';
 import { isFullUrl } from './judge';
 
 export function getGlobalWindow() {
@@ -26,4 +27,36 @@ export function getFullUrl(strOrigin: string, strPath: string) {
   if (!path) return origin;
   if (!origin || path.startsWith(origin) || isFullUrl(path)) return path;
   return [origin.replace(/\/$/, ''), '/', path.replace(/^\//, '')].join('');
+}
+
+function getSplitLabel(url: string) {
+  const searchIndex = url.indexOf('?');
+  const hashIndex = url.indexOf('#');
+  if (searchIndex !== -1 && hashIndex === -1) return '?';
+  if (searchIndex === -1 && hashIndex !== -1) return '#';
+  if (searchIndex < hashIndex) return '?';
+  if (searchIndex > hashIndex) return '#';
+  return '?';
+}
+
+export function getFileName(file: string) {
+  const placeholder = 'Ω';
+  let url = file || '';
+  url = url.replace('??', placeholder);
+  url = url.split(getSplitLabel(url))[0];
+  url = url.replace(placeholder, '??');
+  return url.split('/').pop();
+}
+
+export function getFileExt(file: string, defaultExtName?: FileType) {
+  const fileName = getFileName(file);
+  const defExtName = defaultExtName || FileType.JSON;
+  if (!fileName) return defExtName;
+
+  const canIUse = (s: string) => s === FileType.CSS || s === FileType.JS || s === FileType.JSON || s === FileType.HTML;
+  if (canIUse(fileName)) return fileName as FileType;
+  let ext = (fileName.match(/\[?\.([^\.]+)\]?$/g) || []).map((s) => s.replace(/\[|\.|\]/g, ''))[0] as FileType;
+  ext = /^x?html?$/i.test(ext) ? FileType.HTML : ext;
+  ext = ['ejs', 'es', 'ts', 'mjs', 'jsx', 'tsx', 'vue'].includes(ext) ? FileType.JS : ext;
+  return canIUse(ext) ? ext : defExtName;
 }

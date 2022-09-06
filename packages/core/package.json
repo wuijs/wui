@@ -13,7 +13,10 @@
     "codecov": "codecov",
     "coveralls": "coveralls < ./coverage/lcov.info"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@wuijs/type": "~0.0.1",
+    "@wuijs/util": "~0.0.1"
+  },
   "devDependencies": {
     "codecov": "^3.8.3",
     "coveralls": "^3.1.1",
