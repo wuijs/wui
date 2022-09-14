@@ -1,4 +1,4 @@
-export enum WuiAppStatus {
+export enum AppStatus {
   NOT_ACTIVED = 'NOT_ACTIVED',
   ACTIVING = 'ACTIVING',
   ACTIVED = 'ACTIVED',
@@ -22,7 +22,13 @@ export enum FileType {
 }
 
 export enum EndType {
-  PC = 'pc', // `pc` 配置较多，为防止繁杂，默认之
+  PC = 'pc', // `pc` 在实际应用时配置较多，为防止繁杂，默认之
   H5 = 'h5',
   NONE = 'none', // 响应式
 }
+
+export enum InjectName {}
+
+export enum HookName {}
+
+export enum HookEvent {}
